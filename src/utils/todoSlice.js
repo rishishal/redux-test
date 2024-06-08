@@ -6,14 +6,14 @@ const todoSlice = createSlice({
     todos: [{ id: 1213, text: "hello I am working fine" }],
   },
   reducers: {
-    todo: (state, action) => {
+    addTodo: (state, action) => {
       const todo = {
         id: nanoid(),
         text: action.payload,
       };
       state.todos.push(todo);
     },
-    updatedTodo: (state, action) => {
+    updateTodo: (state, action) => {
       const { id, text } = action.payload;
       const existingItem = state.todos.find((item) => item.id === id);
       if (existingItem) {
@@ -26,4 +26,5 @@ const todoSlice = createSlice({
   },
 });
 
+export const { addTodo, updateTodo, removeTodo } = todoSlice.actions;
 export default todoSlice.reducer;
